@@ -1,2 +1,2 @@
 # auth0-rules
-Rules in Auth0
+Some useful Rules in Auth0
