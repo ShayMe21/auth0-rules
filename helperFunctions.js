@@ -1,7 +1,4 @@
 function setupCommonFunctions(user, context, callback) {
-  const client_id = configuration.AUTH0_USER_CLIENT;
-  const client_secret = configuration.AUTH0_USER_SECRET;
-  const apiv2Audience = configuration.AUTH0_APIV2_AUDIENCE;
   const auth0BaseUrl = auth0.baseUrl;
   
 // https://github.com/request/request-promise
@@ -13,29 +10,13 @@ function setupCommonFunctions(user, context, callback) {
     global.jwtLib = require('jsonwebtoken');
   }
 
-  if (!global.getAccesToken) {
-    global.getAPIv2AccessToken = () => {
-      const body = {
-        grant_type: 'client_credentials',
-        client_id,
-        client_secret,
-        apiv2Audience,
-      };
-      return global.requestLib.post({
-        url: `${auth0BaseUrl}/oauth/token`,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        json: body
-      });
-    };
-  }
 
   if (!global.getUserByEmail) {
-    global.getUserByEmail = (email) => {
+    global.getUserByEmail = (email, fields) => {
+      
       // Check if user already exists in Auth0
       return global.requestLib.get({
-        url: `${auth0BaseUrl}/users-by-email`,
+        url: `${auth0BaseUrl}/users-by-email?fields=${fields.join(',')}`,
         headers: {
           Authorization: 'Bearer ' + auth0.accessToken
         },

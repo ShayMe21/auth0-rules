@@ -34,7 +34,4 @@ function (user, context, callback) {
     console.log("Exception thrown: " + e);
     throw e;
   }
-
-
-  callback(null, user, context);
 }
