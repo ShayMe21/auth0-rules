@@ -21,8 +21,6 @@ function (user, context, callback) {
         let existingUserProvider = existingUser[0].identities[0].provider;
 
         if (existingUser[0].user_id && existingUser[0].user_id !== null && existingUserProvider === "google-oauth2") {
-          console.log();
-
           console.log(`Existing User provider is: ${existingUserProvider} and User has an existing social connection user_id: ${existingUser[0].user_id}`);
           callback(new UnauthorizedError('You already have a Google social account, please use this to login.'));
         }
