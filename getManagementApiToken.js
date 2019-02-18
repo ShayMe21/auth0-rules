@@ -1,4 +1,4 @@
-function (user, context, callback) {
+function getManagementApiToken(user, context, callback) {
   console.log("MANAGEMENT-API RULE RUNNING");
 
   // A M2M Application authorized to Management APIv2
@@ -37,7 +37,7 @@ function (user, context, callback) {
       console.log(`This was a connection timeout: ${err.connect === true}`);
       callback(`There was an issue retrieving Management APIV2 Token: ${err}`);
     });
-    
+
   } catch (e) {
     callback(`Unable to get API2 Token: ${e}`);
   }

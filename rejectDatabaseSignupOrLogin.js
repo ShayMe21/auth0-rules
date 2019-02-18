@@ -3,7 +3,7 @@ This rule is used to detect Username-Password Database connection login/signups 
 This rule relies on the helperFunctions.js rule as well which needs to be defined and ordered earlier than this rule.
 */
 
-function (user, context, callback) {
+function rejectDatabaseSignupOrLogin(user, context, callback) {
 
   const CONNECTION_NAME = "Username-Password-Authentication";
   const SOCIAL_CONNECTION_NAME = "google-oauth2";
