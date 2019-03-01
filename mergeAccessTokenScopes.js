@@ -1,3 +1,8 @@
+/*
+* Sample rule to merge Access Token scopes for a Resource Owner Password grant request in Auth0
+* https://auth0.com/docs/api-auth/tutorials/password-grant
+*/
+
 function mergeAccessTokenScopes(user, context, callback) {
   let existingScopes = context.request.body.scope ? context.request.body.scope : '';
   var mergedScopes;
